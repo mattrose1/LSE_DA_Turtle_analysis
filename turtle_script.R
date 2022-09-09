@@ -30,13 +30,16 @@ summary(turtle.subset)
 library(ggplot2)
 
 ## produce a scatterplot looking at Global Sales and Platform using the subset data
-qplot(Global_Sales, Platform, data=turtle.subset)
+qplot(Global_Sales, Product, data=turtle.subset)
 
 ## produce a histogram with adjusted bins, looking at the distribution of EU Sales
-qplot(EU_Sales, bins=20, data=turtle.subset)
+qplot(EU_Sales, Product, data=turtle.subset)
+
+## produce a histogram with adjusted bins, looking at the distribution of EU Sales
+qplot(NA_Sales, Product, data=turtle.subset)
 
 ## create a boxplot to identify outliers in North America sales
-qplot(Platform, NA_Sales, data=turtle.subset, geom='boxplot')
+qplot(Platform, Global_Sales, data=turtle.subset, geom='boxplot')
 
 ######################################################################
 ## WEEK 5 - CLEAN, MANIPULATE AND VISUALISE
@@ -54,11 +57,6 @@ turtle.groupby <- turtle.subset %>% group_by(Product) %>%
 View(turtle.groupby)
 summary(turtle.groupby)
 
-
-## come back to this 
-qplot(Product, total_Global_Sales, data=turtle.groupby)
-
-qplot(total_Global_Sales, aes=group(Product), data=turtle.groupby, geom='boxplot')
 
 ##calculating the mean, min and max for all sales
 ## mean
